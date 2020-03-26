@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Hospital</string>
+    <string name="txt_filter">FILTER</string>
+    <string name="name_txt">Name</string>
+    <string name="city_txt">City</string>
+    <string name="website_txt">Website</string>
+    <string name="txt_phone">Phone</string>
+    <string name="txt_adapter_name">Name</string>
+</resources>

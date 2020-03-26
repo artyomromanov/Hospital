@@ -1,0 +1,61 @@
+
+Tell me about yourself:
+
+Hi, my name is Artyom, I am a Senior Android Developer and Software Engineer.
+
+I have 4+ years of Android development experience and more than 10 years hands on coding experience.
+
+Born in a family of programmers(mum and dad) I was always surrounded with all kinds of computer logic.
+
+I have touched different IT fields, however looking at MobileDevelopment I have chosen it for being the most
+
+rewarding and challenging - I am a person who is afraid of slow and mundane environment, and embrace new 
+
+challenges and new things to implemement.
+
+
+Last 4 years I was working on different android projects, working with teams of different sizes, and exposed to 
+
+different problems as well.
+
+
+For instance, in my last project, I was dealing with features like Work Manager, in order to support file download without hindering User Experience, change certificate pinning implementation, so reasonably small tickets; and back-end was very helpful and professional.
+
+The app was English Test from Englich Council
+
+
+On the one before that, the HiyaCar app for Car Rental, we worked in a Team of ,and there was a bit of everything, literally lots of work with the back-end collecting crash data, lots of error handling, testing testing and testing. 
+
+There was custom Map to be added to show where is the closest car available
+
+There was security work, where we put SQL Cipher, to secure the transactions better, and AuthTokenInterceptor
+
+to be added, and Android Keystore to add an extra layer of security
+
+There was asynch data stream processing to implement which we user Reactive Streams library, and there was lots of data to process seamlessly,
+
+And the other developers were busy with other apps project owner had at the same time, so it was often me and a junior or two vs the back end and time.
+
+Worked on it in total for over a year, which was very enriching experience.
+
+To conclude
+
+I am type of person who likes to solve problems, test and move on. I like constructive dialog and productive Scrum meeting, but I don't like philosophers
+
+who will hide their incompetence behind long discussions on How To? If I dont know - I say I dont know and I go and research, which is a better use of time in 
+my opinion. Quick learner so no problem for me to do that, and I am always in favour of a creative approach too.
+
+/////////////////////////////////
+
+
+1) What does the app do?
+
+2) Team size and bits(not too much detail)
+
+3) What did you do?
+
+<<<Overview>>
+
+We were looking at test Coverage - 70% - 75%
+95%
+
