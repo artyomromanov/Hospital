@@ -7,4 +7,7 @@
     <string name="txt_phone">Phone</string>
     <string name="txt_adapter_name">Name</string>
     <string name="status_txt">Status</string>
+    <string name="download_txt">DOWNLOAD</string>
+    <string name="url_txt">URL</string>
+    <string name="txt_proceed">PROCEED</string>
 </resources>

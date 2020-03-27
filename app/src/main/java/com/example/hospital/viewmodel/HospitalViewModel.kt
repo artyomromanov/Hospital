@@ -7,21 +7,21 @@ import com.example.hospital.model.HospitalsRepository
 import com.example.hospital.model.database.Hospital
 import io.reactivex.disposables.CompositeDisposable
 
-class HospitalViewModel(private val repository: HospitalsRepository) : ViewModel(){
+class HospitalViewModel(private val repository: HospitalsRepository) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
-    private val hospitalsData = MutableLiveData<List<Hospital>>()
+    private val hospitalsData = MutableLiveData<String>()
     private val errorData = MutableLiveData<String>()
 
-    fun getAllHospitals(){
+    fun getAllHospitals() {
         compositeDisposable.add(
             repository
                 .getHospitalData()
-                .subscribe({ data -> hospitalsData.value = data},{error -> errorData.value = error.message})
+                .subscribe({ data -> data.name },{ error -> errorData.value = error.message })
         )
     }
 
-    fun getHospitalsData() = hospitalsData as LiveData<List<Hospital>>
+    fun getHospitalsData() = hospitalsData as LiveData<String>
     fun getErrorData() = errorData as LiveData<String>
 
 }

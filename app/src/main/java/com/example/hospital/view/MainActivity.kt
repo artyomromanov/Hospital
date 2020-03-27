@@ -1,6 +1,10 @@
 package com.example.hospital.view
 
+import android.app.DownloadManager
+import android.content.Context
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -14,6 +18,7 @@ import com.example.hospital.util.MyApp
 import com.example.hospital.viewmodel.HospitalViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.BufferedReader
+import java.io.File
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.nio.charset.Charset
@@ -23,6 +28,8 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var viewModel : HospitalViewModel
+
+    //val downloadsDir : File? = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,8 +43,9 @@ class MainActivity : AppCompatActivity() {
             getAllHospitals()
 
             getHospitalsData().observe(this@MainActivity, Observer {
-                rv_info.adapter = InfoAdapter(it)
-                tv_status.visibility = View.GONE
+                //rv_info.adapter = InfoAdapter(it)
+                tv_status.visibility = View.VISIBLE
+                tv_status.text = it
             })
             getErrorData().observe(this@MainActivity, Observer {
                 tv_status.text = it
@@ -45,7 +53,6 @@ class MainActivity : AppCompatActivity() {
             })
         }
         val hospitals = initializeHospitals()
-
     }
 
     private fun initializeViewModel() {
