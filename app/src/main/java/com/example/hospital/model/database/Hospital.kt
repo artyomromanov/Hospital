@@ -1,7 +1,14 @@
-package com.example.hospital
+package com.example.hospital.model.database
 
+import androidx.annotation.NonNull
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class Hospital(
-    val organisationID : String?,
+
+    @PrimaryKey
+    val organisationID : String,
     val organisationCode : String?,
     val organisationType : String?,
     val subType : String?,
