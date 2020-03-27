@@ -20,10 +20,7 @@ class NetworkModule {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .client(
-                OkHttpClient.Builder().addInterceptor(
-                    HttpLoggingInterceptor().setLevel(
-                        HttpLoggingInterceptor.Level.BODY)).build())
+            .client(OkHttpClient.Builder().build())
             .build()
             .create(HospitalsClient::class.java)
 

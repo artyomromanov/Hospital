@@ -2,4 +2,5 @@
 <resources>
     <dimen name="dm_default_margin">8dp</dimen>
     <dimen name="dm_item_height">100dp</dimen>
+    <dimen name="dm_details_text_size_title">24sp</dimen>
 </resources>

@@ -8,6 +8,8 @@ import androidx.room.RoomDatabase
 @Database(entities = [Hospital::class], exportSchema = false, version = 1)
 abstract class HospitalsDatabase() : RoomDatabase(){
 
+    abstract fun hospitalsDao() : HospitalsDao
+
     companion object {
 
         @Volatile

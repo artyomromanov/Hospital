@@ -3,7 +3,6 @@
     package="com.example.hospital">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".util.MyApp"
@@ -13,8 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainActivity" />
-        <activity android:name=".DownloadActivity">
+        <activity android:name=".main.view.DetailsActivity"></activity>
+        <activity android:name=".main.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

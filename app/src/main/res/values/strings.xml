@@ -10,4 +10,8 @@
     <string name="download_txt">DOWNLOAD</string>
     <string name="url_txt">URL</string>
     <string name="txt_proceed">PROCEED</string>
+    <string name="txt_details_name">Name</string>
+    <string name="txt_details_address">Address</string>
+    <string name="txt_details_status">Status</string>
+    <string name="contact_details_txt">Contact details</string>
 </resources>

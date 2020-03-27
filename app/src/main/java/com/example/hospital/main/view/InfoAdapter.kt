@@ -1,4 +1,4 @@
-package com.example.hospital.view
+package com.example.hospital.main.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import com.example.hospital.model.database.Hospital
 import com.example.hospital.R
 import kotlinx.android.synthetic.main.info_item.view.*
 
-class InfoAdapter(private val hospitals : List<Hospital>) : RecyclerView.Adapter<InfoAdapter.ViewHolder>(){
+class InfoAdapter(private val hospitals : List<Hospital>, private val listener: RecyclerViewClickListener) : RecyclerView.Adapter<InfoAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
       val v = LayoutInflater.from(parent.context).inflate(R.layout.info_item, parent, false)
@@ -28,6 +28,11 @@ class InfoAdapter(private val hospitals : List<Hospital>) : RecyclerView.Adapter
             itemView.tv_city_actual.text = hospitals[position].city
             itemView.tv_phone_actual.text = hospitals[position].phone
             itemView.tv_website_actual.text = hospitals[position].website
+
+            itemView.setOnClickListener {
+                listener.onRecyclerItemClicked(hospitals[position].organisationID)
+            }
+
         }
     }
 }

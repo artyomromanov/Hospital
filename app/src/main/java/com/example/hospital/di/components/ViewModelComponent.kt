@@ -1,7 +1,7 @@
 package com.example.hospital.di.components
 
 import com.example.hospital.di.modules.HospitalViewModelModule
-import com.example.hospital.view.MainActivity
+import com.example.hospital.main.view.MainActivity
 import dagger.Component
 
 @Component(modules = [HospitalViewModelModule::class], dependencies = [AppComponent::class])

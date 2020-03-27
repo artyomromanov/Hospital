@@ -1,10 +1,9 @@
 package com.example.hospital.model.database
 
-import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "hospitals")
 data class Hospital(
 
     @PrimaryKey
@@ -15,7 +14,7 @@ data class Hospital(
     val sector : String?,
     val organisationStatus : String?,
     val isPimsManaged : String?,
-    val organisationName : String?,
+    val organisationName : String,
     val address1 : String?,
     val address2 : String?,
     val address3 : String?,

@@ -5,7 +5,7 @@ import com.example.hospital.model.RepositoryImpl
 import com.example.hospital.model.HospitalsRepository
 import com.example.hospital.model.database.HospitalsDatabase
 import com.example.hospital.model.network.HospitalsClient
-import com.example.hospital.view.MainActivity
+import com.example.hospital.main.view.MainActivity
 import com.example.hospital.viewmodel.HospitalViewModel
 import com.example.hospital.viewmodel.HospitalViewModelFactory
 import dagger.Module
