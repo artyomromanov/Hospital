@@ -14,4 +14,9 @@
     <string name="txt_details_address">Address</string>
     <string name="txt_details_status">Status</string>
     <string name="contact_details_txt">Contact details</string>
+    <string name="txt_error_unknown">Unknown error</string>
+    <string name="txt_success_caching">Successfully cached to Database</string>
+    <string name="txt_error_caching">\"Error occurred while caching to Database. \"</string>
+    <string name="txt_fetching">Fetching hospital list</string>
+    <string name="txt_nothing_found">No hospital found matching %1$s. Try changing the search query</string>
 </resources>

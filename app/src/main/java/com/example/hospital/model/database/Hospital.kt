@@ -1,8 +1,11 @@
 package com.example.hospital.model.database
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity(tableName = "hospitals")
 data class Hospital(
 
@@ -29,6 +32,6 @@ data class Hospital(
     val email : String?,
     val website : String?,
     val fax : String?
-)
+) : Parcelable
 
 

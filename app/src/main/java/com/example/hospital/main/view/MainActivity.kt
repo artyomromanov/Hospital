@@ -11,14 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hospital.R
 import com.example.hospital.di.components.DaggerViewModelComponent
 import com.example.hospital.di.modules.HospitalViewModelModule
+import com.example.hospital.model.database.Hospital
 import com.example.hospital.util.ITEM_ID
 import com.example.hospital.util.MyApp
 import com.example.hospital.viewmodel.HospitalViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), RecyclerViewClickListener{
-
+class MainActivity : AppCompatActivity() {
+    private lateinit var hospitalAdapter : HospitalAdapter
     @Inject
     lateinit var viewModel: HospitalViewModel
 
@@ -30,36 +31,48 @@ class MainActivity : AppCompatActivity(), RecyclerViewClickListener{
 
         initializeViewModel()
 
-        sv_search.isSubmitButtonEnabled = true
-        sv_search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String): Boolean {
-                viewModel.getHospitalData(query)
-                return true
-            }
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return true
-            }
-        })
+        initializeSearchView()
 
         with(viewModel) {
             downloadAllHospitalsOnline()
-            getHospitalData()
+
             getHospitalLiveData().observe(this@MainActivity, Observer {
-                rv_info.adapter = InfoAdapter(it, this@MainActivity)
-                tv_status.visibility = View.GONE
-            })
-            getErrorData().observe(this@MainActivity, Observer {
-                tv_status.text = it
-                tv_status.visibility = View.VISIBLE
-            })
-            getDatabaseCacheData().observe(this@MainActivity, Observer {
-                if(it){
-                    Toast.makeText(baseContext, "Successfully cached data to database!", Toast.LENGTH_SHORT).show()
+                when (it) {
+                    is HospitalViewModel.HospitalLoadingState.IN_PROGRESS -> displayProgress()
+                    is HospitalViewModel.HospitalLoadingState.SUCCESS -> {
+                        hospitalAdapter =
+                            HospitalAdapter(it.hospitalsData.toMutableList(), { hospital -> onHospitalItemClicked(hospital) }, { onNothingFound() })
+                        rv_info.adapter = hospitalAdapter
+                        tv_status.visibility = View.GONE
+                    }
+                    is HospitalViewModel.HospitalLoadingState.ERROR -> {tv_status.text = it.message; tv_status.visibility = View.VISIBLE}
                 }
             })
-            getNetworkDownloadData().observe(this@MainActivity, Observer {
-                if(it){
-                    Toast.makeText(baseContext, "Successfully downloaded hospitals data", Toast.LENGTH_SHORT).show()
+
+            getDatabaseUpdateData().observe(this@MainActivity, Observer {
+                if (it) {
+                    displayToast(getString(R.string.txt_success_caching))
+                }else{
+                    displayToast(getString(R.string.txt_error_caching))
+                }
+            })
+        }
+    }
+
+    private fun initializeSearchView() {
+
+        sv_search.apply {
+            isSubmitButtonEnabled = true
+
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    //hospitalAdapter.filter.filter(query)
+                    return false
+                }
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    hospitalAdapter.filter.filter(newText)
+                    return false
                 }
             })
         }
@@ -74,9 +87,19 @@ class MainActivity : AppCompatActivity(), RecyclerViewClickListener{
             .injectActivity(this)
     }
 
-    override fun onRecyclerItemClicked(itemId: String) {
-        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-        val putExtra = intent.putExtra(ITEM_ID, itemId)
-        startActivity(intent)
+    private fun onHospitalItemClicked(hospital: Hospital) {
+        startActivity(Intent(this, DetailsActivity::class.java).also { it.putExtra(ITEM_ID, hospital) })
+    }
+
+    private fun displayProgress() {
+        displayToast(getString(R.string.txt_fetching))
+    }
+
+    private fun displayToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+    private fun onNothingFound(){
+        tv_status.text = getString(R.string.txt_nothing_found, sv_search.query)
+        tv_status.visibility = View.VISIBLE
     }
 }

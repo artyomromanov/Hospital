@@ -42,6 +42,7 @@
         android:id="@+id/rv_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/dm_default_margin"/>
+        android:layout_margin="@dimen/dm_default_margin"
+        tools:listitem="@layout/info_item"/>
 
 </LinearLayout>

@@ -7,7 +7,7 @@ import okhttp3.ResponseBody
 
 interface HospitalsRepository {
 
-    fun downloadHospitalData() : Single<ResponseBody>
+    fun downloadHospitalData() : Single<List<Hospital>>
     fun cacheAllHospitalsData(data: List<Hospital>): Completable
     fun getHospitalsFromCache(query : String = "") : Single<List<Hospital>>
 }
