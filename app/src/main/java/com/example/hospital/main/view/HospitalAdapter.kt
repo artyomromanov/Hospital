@@ -14,6 +14,7 @@ import kotlin.collections.ArrayList
 
 class HospitalAdapter(
     private val hospitals: MutableList<Hospital>,
+
     private val listener: (Hospital) -> Unit,
     private val nothingFoundLogic: () -> Unit
 ) :
